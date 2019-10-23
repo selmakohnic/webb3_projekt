@@ -2,12 +2,13 @@
 <html>
 <?php
 include("includes/config.php");
+include("includes/LoginUser.class.php");
 
 //Instans av klassen LoginUser
 $user = new LoginUser();
 
 //Variabler för användarnamn och meddelanden
-$username = $_SESSION["username_sk"];
+//$username = $_SESSION["cv_username"];
 ?>
 
 <head>

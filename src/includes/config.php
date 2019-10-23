@@ -3,5 +3,5 @@
     define("DBHOST", "localhost");
     define("DBUSER", "cv");
     define("DBPASSWORD", "cv_password");
-    define("DBDATABASE", "cv");
+    define("DBDATABASE", "cv")
 ?>

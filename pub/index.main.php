@@ -26,7 +26,7 @@
                     <li><a href="#educationsTitle" title="Utbildningar">Utbildningar</a></li>
                     <li><a href="#websitesTitle" title="Webbplatser">Webbplatser</a></li>
                     <li><a href="#contactTitle" title="Kontakt">Kontakt</a></li>
-                    <li><a href="loggedin.main.php" title="Logga in">Logga in</a></li>
+                    <li><a href="login.main.php" title="Logga in">Logga in</a></li>
                 </ul>
             </nav>
 

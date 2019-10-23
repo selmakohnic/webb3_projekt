@@ -48,15 +48,15 @@ if(isset($_POST["loginBtn"])){
 
     <div id="wrapper">
         <!-- Formulär för inloggning -->
-        <form method="post" action="login.php" id="formSignIn" name="form">
+        <form method="post" action="login.main.php" id="formSignIn" name="form">
             <label>
                 Användarnamn: *<br />
-                <input type="text" name="username" required class="inputField" />
+                <input type="text" name="username" class="inputField" />
             </label>
             <p>
                 <label>
                     Lösenord: *<br />
-                    <input type="password" name="password" required class="inputField" />
+                    <input type="password" name="password" class="inputField" />
                 </label>
             </p>
             <input type="checkbox" name="komihag" value="komihag" id="checkBox"><label for="checkBox" id="checkBoxText">Kom
