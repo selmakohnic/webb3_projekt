@@ -1,0 +1,85 @@
+/*------ LOGGED IN -------*/
+#wrapperLoggedIn  {
+    max-width: $main_width;
+    padding: $main_padding;
+    margin: 0 auto;
+
+    h2 {
+        text-align: left;
+    }
+
+    h3 {
+        color: lighten($primary_purple, 5)
+    }
+
+    label {
+        width: 47%;
+        float: left;
+        margin-bottom: 1.8em;
+        font-weight: bold;
+    }
+    
+    label .inputField {
+        width: 100%;
+        padding: .4em 0 .4em .4em;
+        margin-top: .5em;
+        font: inherit;
+        font-weight: initial;
+    }
+    
+    .rightLabel {
+        float: right;
+        margin-left: 3em;
+    }
+    
+    .formBtn {
+        width: 26%;
+        border: none;
+        color: $black;
+        background-color: $primary_yellow;
+        text-transform: uppercase;
+        font: inherit;
+        font-weight: 700;
+        border-radius: 4px;
+        padding: 1em;
+        margin-bottom: 2em;
+        float: right;
+    }
+    
+    .formBtn:hover {
+        cursor: pointer;
+    }
+
+    form {
+        overflow: auto;
+    }
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 3em;
+
+    th, td {
+        padding: 1em;
+        font-size: 0.95em;
+    }
+
+    th {
+        background-color: lighten($primary_purple, 10);
+        color: white;
+        text-align: left;
+    }
+
+    tr:nth-child(even) {
+        background-color: $gray;
+    }
+}
+
+.editBtn:hover {
+    cursor: pointer;
+}
+
+.websiteUrl {
+    font-size: 0.8em;
+}

@@ -1,0 +1,457 @@
+//Innehåller kod för layout
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: $font;
+    margin: 0;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+h2 {
+    color: $primary_purple;
+    text-align: center;
+}
+
+p {
+    line-height: 1.6em;
+}
+
+.highlight {
+    color: $primary_yellow;
+}
+
+/*------ HEADER ------*/
+#bg_top {
+    display: block;
+    width: 100%;
+    height: 47em;
+    background-image: url("../images/bg-top.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    header {
+        max-width: $main_width;
+        margin: 0 auto;
+        padding: $main_padding;
+        padding-top: 2em;
+        color: $white;
+
+        h2 {
+            color: $white;
+            text-align: left;
+        }
+
+        nav {
+            font-size: 1.1em;
+            font-weight: bold;
+            float: right;
+            margin-bottom: 7em;
+        
+            ul {
+                margin: 0;
+                list-style: none;
+            }
+        
+            li {
+                display: inline;
+                margin-right: 2em;
+            }
+        
+            li:last-child {
+                margin-right: 0;
+            }
+        
+            a {
+                color: $white;
+                text-decoration: none;
+                padding-bottom: 0.4em;
+                transition: border 0.5s;
+            }
+        
+            a:hover {
+                color: $primary_yellow;
+                border-bottom: 2px solid $primary_yellow;
+            }
+        }
+
+        img {
+            border-radius: 50%;
+            box-shadow: -2px 1px 0 4px $primary_yellow; 
+            width: 18em;
+            float: left;
+        }
+
+        div {
+            width: 60%;
+            float: right;
+        }
+
+        #arrow {
+            width: 100%;
+            text-align: center;
+            margin-top: 5em;               
+        }
+
+        .fa-angle-down {
+            color: $white;
+            font-size: 2em;
+            animation: arrow 2s infinite;}
+        }
+        
+         @keyframes arrow {
+            0%, 20%, 50%, 80%, 100% {-webkit-transform: translateY(0);} 
+            40% {-webkit-transform: translateY(-25px);} 
+            60% {-webkit-transform: translateY(-15px);} 
+        }
+          
+}
+
+#wrapper {
+    max-width: $main_width;
+    padding: $main_padding;
+    margin: 0 auto;
+
+    #jobsTitle {
+        margin-top: 16em;
+    }
+
+    #educationsTitle, #websitesTitle {
+        margin-top: 5em;
+    }
+}
+
+/*------ OM MIG ------*/
+#aboutMe {
+    background-color: $primary_purple;
+    border-radius: 3em 0 1em 0;
+    padding: 2em;
+    color: $white;
+    width: 32%;
+    float: left;
+
+    h3 {
+        margin-top: 0;
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        
+        li {
+            margin-bottom: 0.8em;
+        }
+
+        li:last-child {
+            margin-bottom: 0;
+        }
+
+        .fas {
+            color: $primary_yellow;
+            font-size: 1.2em;
+            margin-right: 0.6em;
+        }
+
+        #address {
+            margin-left: 2em;
+        }
+    }
+}
+
+#aboutMeInfo {
+    width: 60%;
+    float: right;
+
+    p {
+        margin: 0;
+    }
+}
+
+/*------ ARBETSLIVSERFARENHET / UTBILDNINGAR ------*/
+/*------ Källa: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_timeline ------*/
+/* The actual timeline (the vertical ruler) */
+.timeline, .timelineEducation {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+
+    /* Container around content */
+    .container {
+        padding: 0.8em 2.5em;
+        position: relative;
+        width: 50%;
+    }
+
+    .containerEducation {
+        position: relative;
+        width: 50%;
+        margin-bottom: 3em;
+    }
+
+    .containerEducation:last-child {
+        margin-bottom: 0;
+    }
+    
+    /* The circles on the timeline */
+    .container::after, .leftEducation::after {
+        content: '';
+        position: absolute;
+        width: 18px;
+        height: 18px;
+        right: -8px;
+        background-color: $primary_purple;
+        top: 20px;
+        border-radius: 50%;
+        z-index: 1;
+    }
+
+    .leftEducation::after {
+        background-color: $primary_yellow;
+    }
+}
+  
+  /* The actual timeline (the vertical ruler) */
+.timeline::after, .timelineEducation::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -3px;
+}
+
+.timeline::after {
+    background-image: linear-gradient(#8e71b0, #b07cac);
+}
+
+.timelineEducation::after {
+    background-color: $primary_yellow;
+}
+  
+  /* Place the container to the left */
+.left, .leftEducation {
+    left: 0;
+
+    .content, .contentEducation {
+        text-align:right;
+
+        h2 {
+            text-align: right;
+        }
+    }
+}
+  
+  /* Place the container to the right */
+.right {
+    left: 50%;
+
+    h2 {
+        text-align: left;
+    }
+  }
+
+  .rightEducation {
+      left: 0;
+}
+  
+  /* Add arrows to the left container (pointing right) */
+.left::before {
+    content: " ";
+    height: 0;
+    position: absolute;
+    top: 22px;
+    width: 0;
+    z-index: 1;
+    right: 30px;
+    border: medium solid $gray;
+    border-width: 10px 0 10px 10px;
+    border-color: transparent transparent transparent $gray;
+}
+  
+  /* Add arrows to the right container (pointing left) */
+.right::before {
+    content: " ";
+    height: 0;
+    position: absolute;
+    top: 22px;
+    width: 0;
+    z-index: 1;
+    left: 30px;
+    border: medium solid $gray;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent $gray transparent transparent;
+}
+
+.right:first-child::before {
+    border: medium solid $primary_yellow;
+    border-color: transparent $primary_yellow transparent transparent;
+}
+  
+  /* Fix the circle for containers on the right side */
+.right::after {
+    left: -10px;
+}
+  
+  /* The actual content */
+.content {
+    padding: 1.1em 1.8em;
+    background-color: $gray;
+    position: relative;
+    border-radius: 6px;
+
+    h2 {
+        color: $black;
+        margin-top: 0.3em;
+        margin-bottom: 1em;
+    }
+
+    h3 {
+        color: $primary_purple;
+        margin-bottom: 0em;
+    }
+
+    p {
+        margin-top: 0.2em;
+    }
+}
+
+.contentEducation {
+    padding-left: 5em;
+    padding-right: 5em;
+
+    h2 {
+        color: $black;
+        margin-top: 0.3em;
+        margin-bottom: 0.2em;
+        text-align: left;
+    }
+
+    h3 {
+        color: $black;
+        margin-bottom: 0em;
+    }
+
+    p {
+        margin-top: 0.2em;
+    }
+}
+
+.right:first-child .content {
+    background-color: $primary_yellow;
+}
+
+.education {
+      display: inline-block;
+      vertical-align:top;
+      left: 0;
+}
+
+/*------ WEBBPLATSER ------*/
+#websites {
+    display: inline-flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    figure {
+        margin: 0;
+        padding: 0;
+        width: 46%;
+        margin-bottom: 3em;
+
+        h2 {
+            color: $black;
+        }
+
+        img {
+            border-radius: 3em 0 1em 0;
+        }
+
+        img:hover {
+            opacity: 0.8;
+        }
+    }
+}
+
+/*------ FOOTER ------*/
+footer {
+    display: block;
+    width: 100%;
+    height: 46em;
+    background-image: url("../images/bg-footer.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#contactForm {
+    max-width: $main_width;
+    margin: 0 auto;
+    margin-top: 3em;
+    padding: 3em;
+    background-color: $white;
+    border-radius: 3em 0 1em 0;
+    box-shadow: 3px 5px 40px -20px $primary_purple;
+
+    div {
+        display: inline-flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    #btn {
+        display: block;
+        float: right;
+        flex-wrap: unset;
+    }
+
+    h2 {
+       margin-top: 0; 
+    }
+
+    p {
+        width: 48%;
+    }
+
+    i {
+        font-size: 0.9em;
+    }
+    
+    .inputText {
+        width: 100%;
+        padding: 0.4em 0 0.4em 0.4em;
+        font: inherit;
+    }             
+        
+    #formSendBtn {
+        padding: 1.6em;
+        background-image: linear-gradient(to bottom right, #f4981a, #f4cb1c);
+        color: #ffffff;
+        border: none;
+        border-radius: 0.25em;
+        width: 200px;
+        text-transform: uppercase;
+        font-weight: bold;
+        margin-top: 2em;
+
+        :hover {
+            cursor: pointer;
+        }
+    }
+}
+
+#copyright {
+    font-weight: bold;
+    color: $white;
+    text-align: center;
+    margin-top: 3em;
+}
