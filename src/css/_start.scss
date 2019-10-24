@@ -1,4 +1,5 @@
 //Innehåller kod för layout
+/* Grundläggande kod såsom teckensnitt, färger och radhöjder. */
 * {
     box-sizing: border-box;
 }
@@ -31,6 +32,12 @@ p {
 }
 
 /*------ HEADER ------*/
+/* Headern får en backgrundsbild som täcker hela bredden av webbläsarfönstret. Headern får en maxbredd, 
+   margins och paddings. Den globala navigeringen får en lite större teckenstorlek och placeras till höger.
+   Varje menyalternativ placeras i en rad bredvid varandra. Bilden görs rund och får en bredd. Texten bredvid
+   bilden får också en bredd. Pilen får en animation så att den rör sig. Hamburgarmenyn förbereds med olika
+   bilder beroende på läge, storlek och placering. Boxen som huvudinnehållet finns inom får en maxbredd och 
+   utrymmen från sidorna. */
 #bg_top {
     display: block;
     width: 100%;
@@ -91,7 +98,7 @@ p {
             float: left;
         }
 
-        div {
+        #aboutInfo {
             width: 60%;
             float: right;
         }
@@ -99,7 +106,8 @@ p {
         #arrow {
             width: 100%;
             text-align: center;
-            margin-top: 5em;               
+            clear: both;
+            margin-top: 32em;               
         }
 
         .fa-angle-down {
@@ -112,8 +120,28 @@ p {
             0%, 20%, 50%, 80%, 100% {-webkit-transform: translateY(0);} 
             40% {-webkit-transform: translateY(-25px);} 
             60% {-webkit-transform: translateY(-15px);} 
-        }
-          
+        }   
+}
+
+.hMenuClose, 
+.hamburgerMenu {
+    float: right;
+    width: 26px;
+    height: 26px;
+    display: none;
+}
+
+.hamburgerMenu {
+    background-image: url(../images/meny.svg);
+}
+
+.hMenuClose {
+    background-image: url(../images/meny_stang.svg);
+}
+
+.hMenuClose,
+.hamburgerMenu:hover {
+    cursor: pointer;
 }
 
 #wrapper {
@@ -125,12 +153,16 @@ p {
         margin-top: 16em;
     }
 
-    #educationsTitle, #websitesTitle {
+    #educationsTitle, 
+    #websitesTitle {
         margin-top: 5em;
     }
 }
 
 /*------ OM MIG ------*/
+/* Rutan med kortfattad information om mig får en bakgrundsfärg, en del rundade hörn, vit teckenfärg, 
+   bredd och en placering. Ikonerna får en gul färg och en del utrymme på höger sida. Den löpande texten
+   om mig får en bredd. */
 #aboutMe {
     background-color: $primary_purple;
     border-radius: 3em 0 1em 0;
@@ -180,7 +212,11 @@ p {
 /*------ ARBETSLIVSERFARENHET / UTBILDNINGAR ------*/
 /*------ Källa: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_timeline ------*/
 /* The actual timeline (the vertical ruler) */
-.timeline, .timelineEducation {
+/* Den första tidslinjen placeras i mitten och får en lila bakgrundsfärg. Varje element får en bakgrundsfärg
+   och har en tillhörande prick på tidslinjen. Pricken placeras och görs lila. Den andra tidslinjen placeras
+   också i mitten men får en gul färg istället med gula prickar. Innehållet placeras vid sidan av tidslinjen. */
+.timeline, 
+.timelineEducation {
     position: relative;
     max-width: 1000px;
     margin: 0 auto;
@@ -203,7 +239,8 @@ p {
     }
     
     /* The circles on the timeline */
-    .container::after, .leftEducation::after {
+    .container::after, 
+    .leftEducation::after {
         content: '';
         position: absolute;
         width: 18px;
@@ -221,7 +258,8 @@ p {
 }
   
   /* The actual timeline (the vertical ruler) */
-.timeline::after, .timelineEducation::after {
+.timeline::after, 
+.timelineEducation::after {
     content: '';
     position: absolute;
     width: 4px;
@@ -240,10 +278,12 @@ p {
 }
   
   /* Place the container to the left */
-.left, .leftEducation {
+.left, 
+.leftEducation {
     left: 0;
 
-    .content, .contentEducation {
+    .content, 
+    .contentEducation {
         text-align:right;
 
         h2 {
@@ -358,6 +398,7 @@ p {
 }
 
 /*------ WEBBPLATSER ------*/
+/* Webbplatserna placeras två stycken bredvid varandra. De får en bredd och bilderna rundas av en del. */
 #websites {
     display: inline-flex;
     justify-content: space-between;
@@ -384,6 +425,12 @@ p {
 }
 
 /*------ FOOTER ------*/
+/* Footern får en bakgrundsbild som täcker hela bredden på webbläsarfönstret. I footern placeras innehåll
+   inom en box med en specifik bredd. Kontaktformuläret får en del mellanrum från sidorna, en vit bakgrundsfärg
+   och en del rundade kanter. Inmatningsfälten görs luftigare. Knappen för att skicka formuläret görs gul, får 
+   en specifik bredd och en del mellanrum åt sidorna. Copyrighttexten under formuläret placeras i mitten, görs
+   fet och får en del utrymme uppifrån. Knappen för att ta användaren längst upp till sidan igen får en bakgrundsfärg,
+   storlek och görs rund. */
 footer {
     display: block;
     width: 100%;
@@ -393,9 +440,13 @@ footer {
     background-size: cover;
 }
 
-#contactForm {
+#footerCon {
     max-width: $main_width;
     margin: 0 auto;
+    padding: $main_padding;
+}
+
+#contactForm {
     margin-top: 3em;
     padding: 3em;
     background-color: $white;
@@ -454,4 +505,22 @@ footer {
     color: $white;
     text-align: center;
     margin-top: 3em;
+}
+
+.fa-chevron-up {
+    padding: 0.8em;
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    color: $primary_purple;
+    background-color: $white;
+    border: 2px solid $primary_purple;
+    border-radius: 50%;
+    font-size: 1.4em;
+}
+
+.fa-chevron-up:hover {
+        color: $white;
+        background-color: $primary_purple;
+        border-color: $white;
 }

@@ -30,8 +30,6 @@ class LoginUser {
             $row = $result->fetch_assoc();
             $storedpassword = $row["password"];
 
-            //if ($storedpassword == crypt($password, $storedpassword)) {
-
             if ($storedpassword == $password) {
                 $_SESSION["cv_username"] = $username;
                 return true;

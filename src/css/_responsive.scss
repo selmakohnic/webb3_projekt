@@ -1,0 +1,516 @@
+/*------ RESPONSIV KOD ------*/
+/* Knappen på startsidan som används till att ta sig längst upp på sidan igen visas inte. */
+@media screen and (max-width: 1300px) {
+    .fa-chevron-up {
+        display: none;
+    }
+}
+
+/* Storlekar för informationen om mig ändras. Teckenstorleken i tabellerna görs mindre. */
+@media screen and (max-width: 1000px) {
+    #aboutMe {
+        width: 37%;
+    }
+
+    #aboutMeInfo {
+        width: 56%;
+    }
+
+    table {
+        font-size: 0.95em;
+    }
+}
+
+/* Headern får en mindre höjd och rubrikerna får mindre storlekar. Den globala navigeringen får en ny placering
+   som täcker resten av innehållet, en lila bakgrundsfärg och utrymme ovanifrån. Profilbilden och informationen om
+   mig får en ny bredd och placering. Hamburgarmenyn visas i detta läge.  */
+@media screen and (max-width: 900px) {
+    #bg_top {
+        height: 35em;
+
+        header {
+            h1 {
+                font-size: 1.6em;
+                margin-top: 0.2em;
+            }
+
+            h2 {
+                font-size: 1.4em;
+            }
+
+            nav {
+                width: 10%;
+                display: none;
+                position: absolute;
+                right: 0;
+                top: 80px;
+                z-index: 10000;
+                background-color: $primary_purple;
+                padding-bottom: 1.5em;
+                width: 100%;
+                margin-bottom: 2em;
+
+                ul {
+                    padding: 0;
+                    margin-top: 1em;    
+                }
+
+                li {
+                    display: block;
+                    margin-right: 0;
+                    margin-top: 2.5em;
+                    width: 100%;
+                    text-align: center;
+                }
+            }
+
+            img, 
+            #aboutInfo {
+                margin-top: 5em;
+            }
+
+            img {
+                width: 16em;
+                margin-left: 0.5em;
+            }
+
+            #aboutInfo {
+                margin-right: -1.5em;
+            }
+
+            #arrow {
+                display: none;
+            }
+        }
+    }
+
+    .hamburgerMenu {
+        display: block;
+    }
+
+    .loggedInImage {
+        margin-top: 2em;
+    }
+
+    .loggedInInfo {
+        margin-top: 7em;
+    }
+}
+
+/* Inmatningsfälten på den inloggade sidan får en full bredd och placeras därför under varandra. */
+@media screen and (max-width: 860px) {
+    #wrapperLoggedIn {
+        label {
+            width: 100%;
+        }
+    }
+}
+
+/* Headern får en ny höjd. Profilbilden och texten bredvid får en full bredd och placeras under varandra.
+   Likaså placeras informationen om mig under varandra med en full bredd. I informationsrutan placeras ikonerna
+   med information så att de är två bredvid varandra. Tabellen får en mindre teckenstorlek. */
+@media screen and (max-width: 850px) {
+    #bg_top {
+        height: 45em;
+
+        header {
+            img,
+            #aboutInfo {
+                float: none;
+            }
+
+            #aboutImage {
+                width: 100%;
+                text-align: center;
+            }
+
+            img {
+                margin-top: 3em;
+            }
+
+            #aboutInfo {
+                width: 80%;
+                margin: 0 auto;
+
+                h1 {
+                    margin-top: 1em;
+                }
+            }
+        }
+    }
+
+    #aboutMe, 
+    #aboutMeInfo {
+        float: none;
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    #aboutMe {
+        overflow: auto;
+
+        li {
+            width: 50%;
+            float: left;
+
+            .fa-envelope {
+                margin-top: 1.2em;
+            }
+        }
+
+        li:nth-child(even) {
+            float: right;
+            padding-left: 4em;
+        }
+    }
+
+    #aboutMeInfo {
+        p {
+            margin-top: 1.2em;
+        } 
+    }
+
+    #wrapper {
+        #jobsTitle {
+            margin-top: 3em;
+        }
+    }
+
+    table {
+        font-size: 0.85em;
+    }
+
+    .loggedInImage {
+        text-align :center;
+    }
+
+    .loggedInInfo {
+        text-align: center;
+    }
+}
+
+/* Tidslinjerna placeras till vänster och resterande innehåll placeras till höger med en ny bredd. */
+@media screen and (max-width: 800px) {
+    .timeline,
+    .timelineEducation {
+        .container, 
+        .containerEducation {
+            width: 85%;
+            margin-bottom: 0.5em;
+        }
+
+        .container::after {
+            right: 0;
+            left: -10px;
+        }
+
+        .leftEducation::after {
+            right: 0;
+            left: 63px;
+        }
+    }
+    
+    .timeline::after,
+    .timelineEducation::after {
+        left: 9.6%;
+        margin-left: 0;
+    }
+
+    .left,
+    .leftEducation {
+        .content,
+        .contentEducation {
+            text-align: left;
+
+            h2 {
+                text-align: left;
+            }
+        }
+
+        .contentEducation {
+            padding-left: 8em;
+        }
+    }
+
+    .rightEducation {
+        left: 10%;
+
+        .contentEducation {
+            padding-left: 3.4em;
+            position: relative;
+        }
+    }
+
+    .left,
+    .right {
+        left: 10%;
+    }
+
+    .left::before,
+    .right::before {
+        content: none;
+    }
+}
+
+/* Ändring av placering av prickar. */
+@media screen and (max-width: 770px) {
+    .timelineEducation {
+        .leftEducation::after {
+            right: 0;
+            left: 59px;
+        }
+    }
+}
+
+/* Informationen i headern och om mig får en full bredd. Ändring av placering av prickar. */
+@media screen and (max-width: 750px) {
+    #bg_top {
+        header {
+            #aboutInfo {
+                width: 100%;
+            }    
+        }
+    }
+
+    #aboutMe, 
+    #aboutMeInfo {
+        width: 100%;
+    }
+
+    .timeline,
+    .timelineEducation {
+        .container, 
+        .containerEducation {
+            padding-right: 0;
+        }
+
+        .leftEducation::after {
+            right: 0;
+            left: 22px;
+        }
+    }
+
+    .timeline::after,
+    .timelineEducation::after {
+        left: 4.5%;
+        margin-left: 0;
+    }
+
+    .left,
+    .right {
+        left: 5%;
+    }
+
+    .leftEducation {
+        .contentEducation {
+            padding-left: 6em;
+        }
+    }
+
+    .rightEducation {
+        .contentEducation {
+            padding-left: 1.6em;
+        }
+    }
+}
+
+/* Tabellens teckenstorlek görs mindre. */
+@media screen and (max-width: 740px) {
+    table {
+        font-size: 0.8em;
+    }
+}
+
+/* Placering av innehåll i utbildningsinformation ändras. Footern får en ny höjd. */
+@media screen and (max-width: 700px) {
+    .leftEducation {
+        .contentEducation {
+            padding-left: 5.5em;
+        }
+    }
+    
+    #contactForm p {
+        width: 100%;
+    }
+
+    footer {
+        height: 58em;
+    }
+}
+
+/* Ändring av placering av prickar. */
+@media screen and (max-width: 650px) {
+    .timelineEducation {
+        .leftEducation::after {
+            left: 18px;
+        }
+    }
+    
+    .leftEducation {
+        .contentEducation {
+            padding-left: 5em;
+        }
+    }
+}
+
+/* Mindre storlekar på rubrikerna. Ikonerna med information i informationsrutan får en full bredd och 
+   placeras därför under varandra. Webbplatserna placeras under varandra med en full bredd. */
+@media screen and (max-width: 620px) {
+    #aboutMe {
+        h1 {
+            font-size: 1.6em;
+        }
+
+        h2 {
+            font-size: 1.2em;
+        }
+
+        li {
+            width: 100%;
+            float: none;
+        }
+
+        li:nth-child(even) {
+            float: none;
+            padding-left: 0;
+        }
+    }
+
+    #wrapper {
+        h1 {
+            font-size: 1.5em;
+        }
+
+        h2 {
+            font-size: 1.2em;
+        }
+
+        #educationsTitle, 
+        #websitesTitle {
+            margin-top: 3em;
+        }
+    }
+
+    #websites {
+        display: block;
+
+        figure {
+            width: 100%;
+
+            img {
+                width: 100%;
+            }
+        }
+    }
+}
+
+
+/* Ändring av placering av prickar. */
+@media screen and (max-width: 570px) {
+    .timelineEducation {
+        .leftEducation::after {
+            left: 14px;
+        }
+    }
+    
+    .leftEducation {
+        .contentEducation {
+            padding-left: 4.5em;
+        }
+    }
+}
+
+
+/* Ändring av placering av innehåll i utbildningsinformationen. Ändring av placering av prickar. */
+@media screen and (max-width: 500px) {
+    .contentEducation {
+        padding-right: 0;
+    }
+
+    .rightEducation {
+        .contentEducation {
+            padding-left: 1.8em;
+        }
+    }
+
+    .timelineEducation {
+        .leftEducation::after {
+            right: 0;
+            left: 12px;
+        }
+    }
+}
+
+/* Mindre teckenstorlek av all text och rubriker. Ny storlek på innehållet av informationsrutorna vid
+   tidslinjerna. */
+@media screen and (max-width: 460px) {
+    body {
+        font-size: 0.9em;
+    }
+    
+    #aboutMe {
+        h1 {
+            font-size: 1.4em;
+        }
+
+        h2 {
+            font-size: 1.1em;
+        }
+    }
+    
+    .timeline,
+    .timelineEducation {
+        .container, 
+        .containerEducation {
+            width: 85%;
+        }
+    }
+}
+
+/* Ändring av placering av prickarna. */
+@media screen and (max-width: 430px) {
+    .timelineEducation {
+        .leftEducation::after {
+            right: 0;
+            left: 8px;
+        }
+    }
+}
+
+/* Headern får en ny höjd och en rubrik får en ny storlek. */
+@media screen and (max-width: 420px) {
+    #bg_top {
+        height: 44em;
+
+        header {
+            h2 {
+                font-size: 1.2em;
+            }
+        }
+    }
+}
+
+/* Rubriken får en mindre storlek. Footern får en ny höjd. */
+@media screen and (max-width: 360px) {
+    #bg_top {
+        header {
+            h2 {
+                font-size: 1.1em;
+            }
+        }
+    }
+
+    footer {
+        height: 59em;
+    }
+}
+
+/* Ändring av placering av prickarna. */
+@media screen and (max-width: 340px) {
+    .timelineEducation {
+        .leftEducation::after {
+            right: 0;
+            left: 4px;
+        }
+    }
+}

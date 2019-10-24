@@ -1,7 +1,7 @@
 "use strict";
 
 //Variabler
-const urlEducationsLoggedIn = "http://studenter.miun.se/~seko1800/dt173g/projekt/api/cv_api.php/educations";
+const urlEducationsLoggedIn = "http://localhost/Webbutveckling3/projekt_api/cv_api.php/educations";
 
 //Hämtar alla utbildningar och skriver ut dessa
 function getEducations() {
@@ -29,7 +29,7 @@ function getEducations() {
 
 //Skriver ut inmatningsfält med utbildningen som ska uppdateras
 function updateFormEducation(id) {
-    const urlEducationsUpdate = `${urlEducationsLoggedIn}/${id}`;
+    const urlEducationsUpdate = `${urlEducationsLoggedIn}/${id}`;   //URL med id
 
     fetch(urlEducationsUpdate)
         .then((res) => res.json())
@@ -55,6 +55,7 @@ function updateFormEducation(id) {
                     Beskrivning: <br>
                     <input type='text' name='cv_descriptionUE' id='cv_descriptionUE' class='inputField' value='${education.description}' required />
                 </label>
+                <div id='msgEU'></div>
                 <input type='submit' value='Spara' class='formBtn' name='formBtn' onClick='updateEducation(${id})'>
                 </form>`;
             })
@@ -65,7 +66,7 @@ function updateFormEducation(id) {
 
 //Uppdatering av utbildning genom att värden hämtas från inmatningsfälten
 function updateEducation(id) {
-    const urlEducationsUpdate = `${urlEducationsLoggedIn}/${id}`;
+    const urlEducationsUpdate = `${urlEducationsLoggedIn}/${id}`;   //URL med id
 
     //Värden i inmatningsfälten sparas i variabler
     let duration = document.getElementById("cv_durationUE").value;
@@ -76,8 +77,7 @@ function updateEducation(id) {
     //Kontroll av innehållet i inmatningsfälten. Är de tomma skrivs ett felmeddelande ut, är dem inte det sparas informationen
     if (duration == "" || duration == null && name == "" || name == null && type == "" || type == null
     || description == null && description == "") {
-        //document.getElementById("msg").innerHTML = "Fyll i alla fält!";
-        console.log("Fel");
+        document.getElementById("msgEU").innerHTML = "Fyll i alla fält!";
     }
     else {
         let jsonStr = JSON.stringify({
@@ -110,8 +110,7 @@ function addEducation() {
     //Kontroll av innehållet i inmatningsfälten. Är de tomma skrivs ett felmeddelande ut, är dem inte det sparas informationen
     if (duration == "" || duration == null && name == "" || name == null && type == "" || type == null
     || description == null && description == "") {
-        //document.getElementById("msg").innerHTML = "Fyll i alla fält!";
-        console.log("Fel");
+        document.getElementById("msgE").innerHTML = "Fyll i alla fält!";
     }
     else {
         let jsonStr = JSON.stringify({
@@ -135,14 +134,16 @@ function addEducation() {
 
 //Raderar en utbildning
 function deleteEducation(id) {
-    const urlEducationsDelete = `${urlEducationsLoggedIn}/${id}`;
+    if (confirm("Är du säker på att du vill ta bort utbildningen?")) {
+        const urlEducationsDelete = `${urlEducationsLoggedIn}/${id}`;   //URL med id
 
-    fetch(urlEducationsDelete, {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json'
+        fetch(urlEducationsDelete, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then((res) => res.json())
+            .then((data) => location.reload(true))
+            .catch((err) => console.log(err))
         }
-    }).then((res) => res.json())
-        .then((data) => location.reload(true))
-        .catch((err) => console.log(err))
 }

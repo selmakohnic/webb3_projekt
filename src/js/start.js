@@ -1,19 +1,25 @@
 "use strict";
 
 //Variabler
-const urlAbout = "http://studenter.miun.se/~seko1800/dt173g/projekt/api/cv_api.php/about";
-const urlJobs = "http://studenter.miun.se/~seko1800/dt173g/projekt/api/cv_api.php/jobs";
-const urlEducations = "http://studenter.miun.se/~seko1800/dt173g/projekt/api/cv_api.php/educations";
-const urlWebsites = "http://studenter.miun.se/~seko1800/dt173g/projekt/api/cv_api.php/websites";
+const urlAbout = "http://localhost/Webbutveckling3/projekt_api/cv_api.php/about";
+const urlJobs = "http://localhost/Webbutveckling3/projekt_api/cv_api.php/jobs";
+const urlEducations = "http://localhost/Webbutveckling3/projekt_api/cv_api.php/educations";
+const urlWebsites = "http://localhost/Webbutveckling3/projekt_api/cv_api.php/websites";
 
 //Händelsehanterare
 window.onload = init;
 
+//Anropar funktioner som behövs direkt
 function init() {
     getUserInfo();
     getJobs();
     getEducations();
     getWebsites();
+}
+
+//Hamburgarmeny som öppnas och stängs
+function toggleMenu(){
+    $("#globalNav").toggle(),$(".hamburgerMenu").toggleClass("hMenuClose")
 }
 
 //Hämtar alla personuppgifter och skriver ut dessa
@@ -125,7 +131,7 @@ function getWebsites() {
                 output += `
                     <figure>
                     <h2>${website.title}</h2>
-                    <a href='${website.url}' title='${website.title}' target='_blank'><img src='../images/${website.image}' alt='${website.title}' title='${website.title}'></a>
+                    <a href='${website.url}' title='${website.title}' target='_blank'><img src='images/${website.image}' alt='${website.title}' title='${website.title}'></a>
                         <figcaption><p>${website.description}</p></figcaption>
                     </figure>`;
             })

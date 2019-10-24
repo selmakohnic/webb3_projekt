@@ -1,7 +1,7 @@
 "use strict";
 
 //Variabler
-const urlJobsLoggedIn = "http://studenter.miun.se/~seko1800/dt173g/projekt/api/cv_api.php/jobs";
+const urlJobsLoggedIn = "http://localhost/Webbutveckling3/projekt_api/cv_api.php/jobs";
 
 //Hämtar alla jobb och skriver ut dessa
 function getJobs() {
@@ -55,6 +55,7 @@ function updateFormJob(id) {
                     Beskrivning: <br>
                     <input type='text' name='cv_descriptionU' id='cv_descriptionU' class='inputField' value='${job.description}' required />
                 </label>
+                <div id='msgJU'></div>
                 <input type='submit' value='Spara' class='formBtn' name='formBtn' onClick='updateJob(${id})'>
                 </form>`;
             })
@@ -65,7 +66,7 @@ function updateFormJob(id) {
 
 //Uppdatering av jobb genom att värden hämtas från inmatningsfälten
 function updateJob(id) {
-    const urlJobsUpdate = `${urlJobsLoggedIn}/${id}`;
+    const urlJobsUpdate = `${urlJobsLoggedIn}/${id}`;   //URL med id
 
     //Värden i inmatningsfälten sparas i variabler
     let duration = document.getElementById("cv_durationU").value;
@@ -76,8 +77,7 @@ function updateJob(id) {
     //Kontroll av innehållet i inmatningsfälten. Är de tomma skrivs ett felmeddelande ut, är dem inte det sparas informationen
     if (duration == "" || duration == null && company == "" || company == null && role == "" || role == null
     || description == null && description == "") {
-        //document.getElementById("msg").innerHTML = "Fyll i alla fält!";
-        console.log("Fel");
+        document.getElementById("msgJU").innerHTML = "Fyll i alla fält!";
     }
     else {
         let jsonStr = JSON.stringify({
@@ -110,8 +110,7 @@ function addJob() {
     //Kontroll av innehållet i inmatningsfälten. Är de tomma skrivs ett felmeddelande ut, är dem inte det sparas informationen
     if (duration == "" || duration == null && company == "" || company == null && role == "" || role == null
     || description == null && description == "") {
-        //document.getElementById("msg").innerHTML = "Fyll i alla fält!";
-        console.log("Fel");
+        document.getElementById("msgJ").innerHTML = "Fyll i alla fält!";
     }
     else {
         let jsonStr = JSON.stringify({
@@ -135,14 +134,16 @@ function addJob() {
 
 //Raderar ett jobb
 function deleteJob(id) {
-    const urlJobsDelete = `${urlJobsLoggedIn}/${id}`;
+    if (confirm("Är du säker på att du vill ta bort jobbet?")) {
+        const urlJobsDelete = `${urlJobsLoggedIn}/${id}`;   //URL med id
 
-    fetch(urlJobsDelete, {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json'
+        fetch(urlJobsDelete, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then((res) => res.json())
+            .then((data) => location.reload(true))
+            .catch((err) => console.log(err))
         }
-    }).then((res) => res.json())
-        .then((data) => location.reload(true))
-        .catch((err) => console.log(err))
 }

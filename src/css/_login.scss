@@ -1,0 +1,64 @@
+/*------ LOGIN ------*/
+/* Felmeddelande får en röd textfärg. Formuläret får en specifik bredd, placeras i mitten, får en ljusare lila
+   bakgrundsfärg och rundade hörn. Inmarningsfälten görs luftigare och får en bredd som täcker hela formuläret.
+   Checkboxen görs något större. Logga in-knappen får en specifk storlek, en gul bakgrundsfärg och rundade hörn.
+   Texten under formuläret där det undras om användaren glömt sitt lösenord placeras i mitten, får en svart
+   textfärg och en del utrymme ovanfrån. */
+.errorText {
+    color: red;
+    font-weight: bold;
+}
+
+#formSignIn {
+    max-width: 460px;
+    margin: 0 auto;
+    padding: 2em;
+    background-color: lighten($primary_purple, 10);
+    margin-top: 6em;
+    border-radius: 4px;
+
+    label {
+        font-weight: bold;
+    }
+
+    .inputField {
+        width: 100%;
+        padding: 0.4em 0 0.4em 0.4em;
+        font: inherit;
+        font-weight: normal;
+    }              
+
+    #checkBox {
+        width: 1.3em;
+        height: 1.3em;
+        margin: 1em 1em 0 0;
+    }
+
+    #checkBoxText {
+        font-weight: normal;
+    }
+
+    #loginBtn {
+        background-color: $primary_yellow;
+        color: $black;
+        margin-top: 4em;
+        width: 100%;
+        border: none;
+        text-transform: uppercase;
+        font: inherit;
+        font-weight: bold;
+        border-radius: 4px;
+        padding: 1em;
+    }
+
+    #loginBtn:hover {
+        cursor: pointer;
+    }
+
+    #forgotPsw {
+        display: block;
+        text-align: center;
+        margin-top: 2em;
+        color: $black;
+    }
+}

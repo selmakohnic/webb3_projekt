@@ -1,4 +1,36 @@
 /*------ LOGGED IN -------*/
+/* Logga ut-knappen får en specifk bredd, en gul bakgrundsfärg, svart textfärg, rundade hörn och placeras till
+   höger. Profilbilden och inloggningstexten får en del utrymme ovanifrån. Boxen som innehåller huvudinnehållet
+   får en specifik bredd och placeras i mitten. Inmatningsfälten får en specifk bredd, placeras två stycken 
+   bredvid varandra och görs luftigare. Knapparna för att lägga till eller uppdatera information får likt utseende
+   som logga ut-knappen med den gula bakgrunden och svarta textfärgen. Tabellerna får en maxbredd och en del utrymme 
+   från sidorna. Rubrikerna i tabellen får en lila bakgrundsfärg och vit textfärg. Raderna får varannan vit och varannan
+   grå bakgrundsfärg. Footern får en del utrymme ovanifrån och vid sidorna. */
+.logoutBtn {
+    padding: 1.4em 4em;
+    background-color: $primary_yellow;
+    color: $black;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    float: right;
+    margin-top: 1em;
+}
+
+.logoutBtn:hover {
+    cursor: pointer;
+}
+
+.loggedInImage {
+    margin-top: 10em;
+}
+
+.loggedInInfo {
+    margin-top: 7em;
+}
+
 #wrapperLoggedIn  {
     max-width: $main_width;
     padding: $main_padding;
@@ -33,7 +65,7 @@
     }
     
     .formBtn {
-        width: 26%;
+        width: 15em;
         border: none;
         color: $black;
         background-color: $primary_yellow;
@@ -82,4 +114,14 @@ table {
 
 .websiteUrl {
     font-size: 0.8em;
+}
+
+.regularFooter {
+    height: 2em;
+    background-image: none;
+    
+    #copyright {
+        color: $black;
+        padding-bottom: 4em;
+    }
 }

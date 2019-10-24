@@ -1,7 +1,7 @@
 "use strict";
 
 //Variabler
-const urlWebsitesLoggedIn = "http://studenter.miun.se/~seko1800/dt173g/projekt/api/cv_api.php/websites";
+const urlWebsitesLoggedIn = "http://localhost/Webbutveckling3/projekt_api/cv_api.php/websites";
 
 //Hämtar alla webbplatser och skriver ut dessa
 function getWebsites() {
@@ -31,7 +31,7 @@ function getWebsites() {
 
 //Skriver ut inmatningsfält med webbplatsen som ska uppdateras
 function updateFormWebsite(id) {
-    const urlWebsitesUpdate = `${urlWebsitesLoggedIn}/${id}`;
+    const urlWebsitesUpdate = `${urlWebsitesLoggedIn}/${id}`;   //URL med id
 
     fetch(urlWebsitesUpdate)
         .then((res) => res.json())
@@ -57,6 +57,7 @@ function updateFormWebsite(id) {
                     Bildlänk: <br>
                     <input type='text' name='cv_imageUW' id='cv_imageUW' class='inputField' value='${website.image}' required />
                 </label>
+                <div id='msgWU'></div>
                 <input type='submit' value='Spara' class='formBtn' name='formBtn' onClick='updateWebsite(${id})'>
                 </form>`;
             })
@@ -67,19 +68,18 @@ function updateFormWebsite(id) {
 
 //Uppdatering av webbplats genom att värden hämtas från inmatningsfälten
 function updateWebsite(id) {
-    const urlWebsitesUpdate = `${urlWebsitesLoggedIn}/${id}`;
+    const urlWebsitesUpdate = `${urlWebsitesLoggedIn}/${id}`;   //URL med id
 
     //Värden i inmatningsfälten sparas i variabler
-    let title = document.getElementById("cv_titleW").value;
-    let url = document.getElementById("cv_urlW").value;
-    let description = document.getElementById("cv_descriptionW").value;
-    let image = document.getElementById("cv_imageW").value;
+    let title = document.getElementById("cv_titleUW").value;
+    let url = document.getElementById("cv_urlUW").value;
+    let description = document.getElementById("cv_descriptionUW").value;
+    let image = document.getElementById("cv_imageUW").value;
 
     //Kontroll av innehållet i inmatningsfälten. Är de tomma skrivs ett felmeddelande ut, är dem inte det sparas informationen
     if (title == "" || title == null && url == "" || url == null && description == "" || description == null
     || image == null && image == "") {
-        //document.getElementById("msg").innerHTML = "Fyll i alla fält!";
-        console.log("Fel");
+        document.getElementById("msgWU").innerHTML = "Fyll i alla fält!";
     }
     else {
         let jsonStr = JSON.stringify({
@@ -112,8 +112,7 @@ function addWebsite() {
     //Kontroll av innehållet i inmatningsfälten. Är de tomma skrivs ett felmeddelande ut, är dem inte det sparas informationen
     if (title == "" || title == null && url == "" || url == null && description == "" || description == null
     || image == null && image == "") {
-        //document.getElementById("msg").innerHTML = "Fyll i alla fält!";
-        console.log("Fel");
+        document.getElementById("msgW").innerHTML = "Fyll i alla fält!";
     }
     else {
         let jsonStr = JSON.stringify({
@@ -137,14 +136,16 @@ function addWebsite() {
 
 //Raderar en webbplats
 function deleteWebsite(id) {
-    const urlWebsitesDelete = `${urlWebsitesLoggedIn}/${id}`;
+    if (confirm("Är du säker på att du vill ta bort webbplatsen?")) {
+        const urlWebsitesDelete = `${urlWebsitesLoggedIn}/${id}`;   //URL med id
 
-    fetch(urlWebsitesDelete, {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    }).then((res) => res.json())
-        .then((data) => location.reload(true))
-        .catch((err) => console.log(err))
+        fetch(urlWebsitesDelete, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then((res) => res.json())
+            .then((data) => location.reload(true))
+            .catch((err) => console.log(err))
+    }
 }

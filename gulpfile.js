@@ -5,6 +5,7 @@ const concat = require("gulp-concat");
 const uglify = require("gulp-uglify-es").default;
 const uglifyCss = require("gulp-clean-css");
 const sass = require("gulp-sass");
+var babel = require("gulp-babel");
 sass.compiler = require("node-sass");
 
 //Sökvägar
@@ -50,7 +51,9 @@ function sassTask() {
 
 function jsTaskStart() {
     return src(files.jsPathStart)
-        //.pipe(concat("main.js"))
+        .pipe(babel({
+            presets: ['@babel/env']
+        }))
         .pipe(uglify())
         .pipe(dest("pub/js"))
         .pipe(browserSync.stream())
@@ -59,6 +62,9 @@ function jsTaskStart() {
 //Task sammanslå, minifiera och kopiera JS-filer
 function jsTask() {
     return src(files.jsPath)
+        .pipe(babel({
+            presets: ['@babel/env']
+        }))
         .pipe(concat("main.js"))
         .pipe(uglify())
         .pipe(dest("pub/js"))

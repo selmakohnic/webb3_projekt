@@ -1,28 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="sv">
 <?php
+session_start();
+
+//Inkluderar filer
 include("includes/config.php");
 include("includes/LoginUser.class.php");
 
-//Instans av klassen LoginUser
-$user = new LoginUser();
+//Om användaren inte är inloggad skickas hen tillbaka till inloggningssidan
+if (!isset($_SESSION["cv_username"])) {
+    $_SESSION["cv_username"] = "";
+    header("Location: login.main.php");
+}
 
-//Variabler för användarnamn och meddelanden
-//$username = $_SESSION["cv_username"];
+if (isset($_POST['logoutBtn'])) {
+    if (!isset($_SESSION)) {
+      session_start();
+    }
+    session_destroy();
+    unset($_SESSION['cv_username']);
+    header('Location: login.main.php');
+  }
 ?>
 
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>CV | Selma Kohnic</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <!-- Ikoner -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css"
-        integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
-
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
 
     <!-- Stilmall -->
     <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -31,13 +38,21 @@ $user = new LoginUser();
 <body>
     <div id="bg_top">
         <header>
+            <!-- Logga ut-knapp -->
+            <form method='post' action='loggedin.main.php' id='navForm'><input type='submit' value='Logga ut' class='logoutBtn' name='logoutBtn'></form>
+
+            <!-- Profilbild och information om inloggning -->
+            <div id="aboutImage" class="loggedInImage">
+                <img src="images/selmakohnic.jpg" alt="Selma Kohnic" title="Selma Kohnic">
+            </div>
+
+            <div id="aboutInfo" class="loggedInInfo">
+                <h1>Inloggad - <span class="highlight">Selma Kohnić</span></h1>
+            </div>
         </header>
     </div>
 
     <div id="wrapperLoggedIn">
-        <h1>Inloggad</h1>
-        <p>Text text text</p>
-
         <!-- Personuppgifter -->
         <section>
             <h2>Personuppgifter</h2>
@@ -83,6 +98,7 @@ $user = new LoginUser();
             <!-- Uppdatering av jobb -->
             <div id="updateJobs"></div>
 
+            <!-- Lägga till jobb -->
             <div>
                 <h3>Lägg till jobb</h3>
                 <form>
@@ -102,9 +118,10 @@ $user = new LoginUser();
                         Beskrivning: <br>
                         <input type='text' name='cv_description' id='cv_description' class='inputField' required />
                     </label>
+                    <div id="msgJ"></div>
                     <input type='submit' value='Lägg till' class='formBtn' name='formBtn' onClick='addJob();'>
+                </form>
             </div>
-            </form>
         </section>
 
         <!-- Utbildning -->
@@ -128,6 +145,7 @@ $user = new LoginUser();
             <!-- Uppdatering av utbildning -->
             <div id="updateEducations"></div>
 
+            <!-- Lägga till utbildning -->
             <div>
                 <h3>Lägg till utbildning</h3>
                 <form>
@@ -147,9 +165,10 @@ $user = new LoginUser();
                         Beskrivning: <br>
                         <input type='text' name='cv_descriptionE' id='cv_descriptionE' class='inputField' required />
                     </label>
+                    <div id="msgU"></div>
                     <input type='submit' value='Lägg till' class='formBtn' name='formBtn' onClick='addEducation();'>
+                </form>
             </div>
-            </form>
         </section>
 
         <!-- Webbplatser -->
@@ -173,6 +192,7 @@ $user = new LoginUser();
             <!-- Uppdatering av webbplats -->
             <div id="updateWebsites"></div>
 
+            <!-- Lägga till webbplats -->
             <div>
                 <h3>Lägg till webbplats</h3>
                 <form>
@@ -192,15 +212,19 @@ $user = new LoginUser();
                         Bildnamn (sealwebbyra.jpg): <br>
                         <input type='text' name='cv_imageW' id='cv_imageW' class='inputField' value="sealwebbyra.jpg" required />
                     </label>
+                    <div id="msgW"></div>
                     <input type='submit' value='Lägg till' class='formBtn' name='formBtn' onClick='addWebsite();'>
+                </form>
             </div>
-            </form>
         </section>
     </div>
 
-    <footer>
+    <footer class="regularFooter">
+        <!-- Copyright -->
         <p id="copyright">&copy; Selma Kohnic 2019</p>
     </footer>
+
+    <!-- JS-fil -->
     <script src="js/main.js"></script>
 </body>
 

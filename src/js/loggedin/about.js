@@ -1,7 +1,7 @@
 "use strict";
 
 //Variabler
-const urlAboutLoggedIn = "http://studenter.miun.se/~seko1800/dt173g/projekt/api/cv_api.php/about";
+const urlAboutLoggedIn = "http://localhost/Webbutveckling3/projekt_api/cv_api.php/about";
 
 //Hämtar alla personuppgifter och skriver ut dessa
 function getUserInfo() {
@@ -13,13 +13,16 @@ function getUserInfo() {
 
             //Varje element i JSON-fil skrivs ut med hjälp av en forEach-loop
             data.forEach(function (user) {
+                let email = user.email;
+                email = email.substr(0,12);
+
                 output += `<tr>
                     <td>${user.name}</td>
                     <td>${user.personal_id}</td>
                     <td>${user.address}</td>
                     <td>${user.zip_code}</td>
                     <td>${user.city}</td>
-                    <td>${user.email}</td>
+                    <td>${email}[...]</td>
                     <td>0${user.phone}</td>
                     <td id='${user.id}' class='editBtn' onClick='updateFormUser(this.id);'><i class="fas fa-edit"></i></td>
                 </tr>`;
@@ -31,7 +34,7 @@ function getUserInfo() {
 
 //Skriver ut inmatningsfält med personuppgifterna som ska uppdateras
 function updateFormUser(id) {
-    const urlAboutUpdate = `${urlAboutLoggedIn}/${id}`;
+    const urlAboutUpdate = `${urlAboutLoggedIn}/${id}`; //URL med id
 
     fetch(urlAboutUpdate)
         .then((res) => res.json())
@@ -65,6 +68,7 @@ function updateFormUser(id) {
                     Telefonnummer: <br>
                     <input type='text' name='cv_phone' id='cv_phone' class='inputField' value='0${user.phone}' required />
                 </label>
+                <div id='msgA'></div>
                 <input type='submit' value='Spara' class='formBtn' name='formBtn' onClick='updateAbout(${id})'>
                 </form>`;
             })
@@ -75,7 +79,7 @@ function updateFormUser(id) {
 
 //Uppdatering av personuppgifterna genom att värden hämtas från inmatningsfälten
 function updateAbout(id) {
-    const urlAboutUpdate = `${urlAboutLoggedIn}/${id}`;
+    const urlAboutUpdate = `${urlAboutLoggedIn}/${id}`; //URL med id
 
     //Värden i inmatningsfälten sparas i variabler
     let name = document.getElementById("cv_name").value;
@@ -88,8 +92,7 @@ function updateAbout(id) {
     //Kontroll av innehållet i inmatningsfälten. Är de tomma skrivs ett felmeddelande ut, är dem inte det sparas informationen
     if (name == "" || name == null && address == "" || address == null && zip_code == "" || zip_code == null
     || city == null && city == "" || email == null && email == "" || phone == null && phone == "") {
-        //document.getElementById("msg").innerHTML = "Fyll i alla fält!";
-        console.log("Fel");
+        document.getElementById("msgA").innerHTML = "Fyll i alla fält!";
     }
     else {
         let jsonStr = JSON.stringify({
