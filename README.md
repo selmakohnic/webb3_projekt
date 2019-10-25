@@ -5,3 +5,6 @@ och lösenord för att kunna göra ändringar i CV:et. På den inloggade sidan p
 också läggas till eller tas bort. 
 
 För att starta systemet klona först projektet genom: git clone https://github.com/selmakohnic/webb3_projekt och skriv därefter kommandot: npm install i en terminal. Vidare skrivs kommandot gulp.
+
+Länk till demonstration av CV: http://studenter.miun.se/~seko1800/dt173g/projektuppgift/index.main.php
+Länk till administrationsgränssnitt: http://studenter.miun.se/~seko1800/dt173g/projektuppgift/login.main.php
