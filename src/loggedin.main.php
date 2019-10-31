@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html lang="sv">
 <?php
 session_start();
 
@@ -9,7 +7,6 @@ include("includes/LoginUser.class.php");
 
 //Om användaren inte är inloggad skickas hen tillbaka till inloggningssidan
 if (!isset($_SESSION["cv_username"])) {
-    $_SESSION["cv_username"] = "";
     header("Location: login.main.php");
 }
 
@@ -22,7 +19,9 @@ if (isset($_POST['logoutBtn'])) {
     header('Location: login.main.php');
   }
 ?>
-
+<!DOCTYPE html>
+<html lang="sv">
+    
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
